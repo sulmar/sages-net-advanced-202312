@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartialClassExample", "Fund
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "Fundamentals\WebApi\WebApi.csproj", "{46DCA4E4-38A0-41DF-B044-18EDEC4313C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp", "Fundamentals\WinFormsApp\WinFormsApp.csproj", "{C51022D8-E2A9-4538-A923-CF1DDF0C85A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp", "Fundamentals\BlazorApp\BlazorApp.csproj", "{A3BA721E-19DA-448B-9B1B-3C5F8D9DD550}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{46DCA4E4-38A0-41DF-B044-18EDEC4313C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46DCA4E4-38A0-41DF-B044-18EDEC4313C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46DCA4E4-38A0-41DF-B044-18EDEC4313C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C51022D8-E2A9-4538-A923-CF1DDF0C85A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C51022D8-E2A9-4538-A923-CF1DDF0C85A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C51022D8-E2A9-4538-A923-CF1DDF0C85A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C51022D8-E2A9-4538-A923-CF1DDF0C85A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3BA721E-19DA-448B-9B1B-3C5F8D9DD550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3BA721E-19DA-448B-9B1B-3C5F8D9DD550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3BA721E-19DA-448B-9B1B-3C5F8D9DD550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3BA721E-19DA-448B-9B1B-3C5F8D9DD550}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

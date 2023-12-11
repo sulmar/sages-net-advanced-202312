@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using PartialClassExample;
+
+Console.WriteLine("Hello, Partial class!");
+
+Customer customer = new Customer();
+
+customer.is
