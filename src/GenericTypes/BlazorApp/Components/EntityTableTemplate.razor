@@ -1,0 +1,35 @@
+﻿@using global::BlazorApp.Model
+
+@typeparam T where T : BaseEntity
+
+<table>
+    <thead>
+        <tr>
+            @HeaderTemplate
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (T entity in Entities)
+        {
+            <tr>
+                @RowTemplate(entity);
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+
+@code {
+
+    [Parameter]
+    public IList<T> Entities { get; set; }
+
+    [Parameter]
+    public RenderFragment HeaderTemplate { get; set; }
+
+    [Parameter]
+    public RenderFragment<T> RowTemplate { get; set; }
+
+}
