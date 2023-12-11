@@ -17,7 +17,8 @@ static void DepotTest()
     depot.DisplayDepotContents();
 
     depot.SendItem("Place1");
-    depot.SendItem("Place2");
+    depot.SendItem("Place1");
+    depot.SendItem("Place1");
 
     depot.DisplayDepotContents();
 }
