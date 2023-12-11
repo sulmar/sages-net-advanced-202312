@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp", "Fundamentals
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp", "Fundamentals\BlazorApp\BlazorApp.csproj", "{A3BA721E-19DA-448B-9B1B-3C5F8D9DD550}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "Fundamentals\WpfApp\WpfApp.csproj", "{4C93FE2D-4BD4-4417-B37D-67763FB24687}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartialMethodsExample", "Fundamentals\PartialMethodsExample\PartialMethodsExample.csproj", "{A789B49B-B94F-4FD1-AC5C-F55BDF5DFD37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{A3BA721E-19DA-448B-9B1B-3C5F8D9DD550}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3BA721E-19DA-448B-9B1B-3C5F8D9DD550}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3BA721E-19DA-448B-9B1B-3C5F8D9DD550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C93FE2D-4BD4-4417-B37D-67763FB24687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C93FE2D-4BD4-4417-B37D-67763FB24687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C93FE2D-4BD4-4417-B37D-67763FB24687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C93FE2D-4BD4-4417-B37D-67763FB24687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A789B49B-B94F-4FD1-AC5C-F55BDF5DFD37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A789B49B-B94F-4FD1-AC5C-F55BDF5DFD37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A789B49B-B94F-4FD1-AC5C-F55BDF5DFD37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A789B49B-B94F-4FD1-AC5C-F55BDF5DFD37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

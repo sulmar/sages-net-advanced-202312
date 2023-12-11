@@ -4,4 +4,4 @@ Console.WriteLine("Hello, Partial class!");
 
 Customer customer = new Customer();
 
-customer.is
+
