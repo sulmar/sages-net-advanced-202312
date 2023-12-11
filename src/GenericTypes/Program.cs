@@ -11,7 +11,6 @@ string stringValue = localStorage.Get<string>("Key1");
 
 int intValue = localStorage.Get<int>("temp");
 
-
 Console.WriteLine(stringValue);
 Console.WriteLine(intValue);
 

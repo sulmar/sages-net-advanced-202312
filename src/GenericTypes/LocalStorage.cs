@@ -24,15 +24,3 @@ internal class LocalStorage
         return (T)Convert.ChangeType(value, typeof(T));
     }   
 }
-
-class Factory
-{
-    public static object Create(Type type)
-    {
-        throw new NotImplementedException();
-    }
-
-    public static T Create<T>() { 
-        throw new NotImplementedException();
-    }
-}
