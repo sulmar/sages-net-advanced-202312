@@ -1,7 +1,15 @@
-﻿
-using LazyCollectionExample;
+﻿using LazyCollectionExample;
+using System.Data;
 
 Console.WriteLine("Hello, Lazy Collection!");
+
+GenerateTemperaturesTest();
+
+GenerateNumbersTest();
+
+DataTableToEnumerationTest();
+
+YieldTest();
 
 DecisionTreeTest();
 
@@ -28,5 +36,70 @@ static void DecisionTreeTest()
     foreach (var decision in decisionTree.TraverseInOrder())
     {
         Console.WriteLine(decision);
+    }
+}
+
+static void YieldTest()
+{
+    var weekDays = DateHelper.GetWeekDays();
+
+    foreach (var day in weekDays)
+    {
+        Console.WriteLine(day);
+
+        if (day == "Sr")
+            break;
+    }
+}
+
+static void DataTableToEnumerationTest()
+{
+    DataTable dataTable = new();
+    dataTable.Columns.Add(new DataColumn("FirstName"));
+    dataTable.Columns.Add(new DataColumn("LastName"));
+
+    var newRow = dataTable.NewRow();
+    newRow[0] = "John";
+    newRow[1] = "Smith";
+    dataTable.Rows.Add(newRow);
+
+    newRow = dataTable.NewRow();
+    newRow[0] = "Kate";
+    newRow[1] = "Smith";
+    dataTable.Rows.Add(newRow);
+
+    newRow = dataTable.NewRow();
+    newRow[0] = "Bob";
+    newRow[1] = "Smith";
+    dataTable.Rows.Add(newRow);
+
+    var rows = DateHelper.AsEnumerable(dataTable);
+
+    foreach (var row in rows)
+    {
+        Console.WriteLine(row);
+    }
+}
+
+static void GenerateNumbersTest()
+{
+    var numbers = DateHelper.Generate(10, 20);
+
+
+    foreach (var number in numbers)
+    {
+        Console.WriteLine(number);
+    }
+}
+
+static void GenerateTemperaturesTest()
+{
+    var temperatures = DateHelper.GetTemperatures();
+
+    foreach (var temperature in temperatures)
+    {
+        Console.WriteLine(temperature);
+
+        Thread.Sleep(1000);
     }
 }
