@@ -4,9 +4,31 @@ using Collections.Core;
 
 Console.WriteLine("Hello, HashSet!");
 
+HashSet<int> set1 = new HashSet<int> { 1, 2, 3, 4, 5 };
+HashSet<int> set2 = new HashSet<int> { 3, 4, 5, 6, 7 };
+
+// Suma zbiorów
+HashSet<int> unionSet = new HashSet<int>(set1); // tworzona jest kopia z oryginalnego zbioru
+unionSet.UnionWith(set2);
+
+unionSet.Dump("Union of set1 and set2");
+
+
+// Różnica zbiorów
+HashSet<int> diffSet = new HashSet<int>(set1);
+diffSet.ExceptWith(set2);
+
+diffSet.Dump("Difference of set1 and set2");
+
+// Iloczyn zbiorów (część wspólna zbiorów)
+HashSet<int> interSet = new HashSet<int>(set1);
+interSet.IntersectWith(set2);
+interSet.Dump("Intersection of set1 and set2");
+
+
 // TrackingServiceTest();
 
-ImageServiceTest();
+// ImageServiceTest();
 
 Console.WriteLine();
 
