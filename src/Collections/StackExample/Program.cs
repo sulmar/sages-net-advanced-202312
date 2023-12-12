@@ -2,6 +2,26 @@
 
 Console.WriteLine("Hello, Stack!");
 
+IArticleCaretaker articleCaretaker = new StackArticleCaretaker();
+
+Article article = new Article();
+article.Content = "a";
+articleCaretaker.SetState(article.CreateMemento());
+
+article.Content = "b";
+articleCaretaker.SetState(article.CreateMemento());
+
+article.Content = "c";
+
+// TODO: undo
+article.SetMemento(articleCaretaker.GetState()); // b
+article.SetMemento(articleCaretaker.GetState()); // a
+article.SetMemento(articleCaretaker.GetState());
+
+
+
+
+
 DepotTest();
 
 static void DepotTest()
