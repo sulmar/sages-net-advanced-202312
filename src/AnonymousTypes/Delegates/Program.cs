@@ -1,7 +1,32 @@
 ﻿
 using Delegates;
+using System.Net.WebSockets;
 
 Console.WriteLine("Hello, Delegates!");
+
+//Action<string> myAction = delegate (string message)
+//{
+//    Console.WriteLine(message);
+//};
+
+// Action<string> myAction = (message) => Console.WriteLine(message);
+
+var myAction = (string message) => Console.WriteLine(message);
+
+myAction("Hello Action!");
+
+//Func<string, string> myFunc = delegate (string value)
+//{
+//    return "Some value";
+//};
+
+// Func<string, string> myFunc = (value) => "Some value";
+
+var myFunc = (string value) => "Some value";
+
+myFunc("Hello Func!");
+
+
 
 Printer printer = new Printer();
 
