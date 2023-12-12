@@ -7,6 +7,8 @@ Printer printer = new Printer();
 
 printer.OnErrorPrint(DisplayError);
 
+printer.OnErrorPrint(error => Console.WriteLine(error));
+
 printer.PrintCompleted += OnPrintCompleted;
 printer.Printed += Printer_Printed;
 
@@ -14,7 +16,6 @@ void Printer_Printed(object sender, PrintedEventArgs e)
 {
     Console.WriteLine($"Printed {e.Copies} copies. Cost {e.Cost:C2}");
 }
-
 
 
 printer.CanPrint += CanPrint;
@@ -25,10 +26,13 @@ printer.Log += delegate (string message)
     Console.WriteLine(message);
 };
 
-printer.Log += Console.WriteLine;
+// Metoda anonimowa (wyrażenie lambda)
+printer.Log += (message) => Console.WriteLine(message);
 
 // Metoda nazwana
 printer.Log += LogToFile;
+
+printer.Log += Console.WriteLine;
 
 printer.Log -= LogToFile;
 
@@ -47,7 +51,18 @@ if (loggers != null)
 
 decimal cost = 0.99M;
 
-printer.CalculateCost += CalculateCost;
+// printer.CalculateCost += CalculateCost;
+
+//printer.CalculateCost = delegate (int copies)
+//{
+//    return copies * cost;
+//};
+
+// Wyrażenie lambda
+printer.CalculateCost = copies => copies * cost;
+
+// JS: copies -> copies * cost;
+// R:  copies <- copies * cost
 
 printer.Print("Lorem ipsum", 3);
 
