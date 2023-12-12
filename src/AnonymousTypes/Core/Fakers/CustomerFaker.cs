@@ -11,6 +11,7 @@ public class CustomerFaker : Faker<Customer>
 {
     public CustomerFaker()
     {
+        UseSeed(0);
         RuleFor(p => p.Id, f => f.IndexFaker);
         RuleFor(p => p.FirstName, f => f.Person.FirstName);
         RuleFor(p => p.LastName, f => f.Person.LastName);

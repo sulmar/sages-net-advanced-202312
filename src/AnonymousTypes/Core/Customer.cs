@@ -13,7 +13,7 @@ public class Customer
 
     public override string ToString()
     {
-        return $"{FirstName} {LastName} {Email} {IsRemoved}";
+        return $"{FirstName} {LastName} {Email} {IsRemoved} {City}";
     }
 }
 
