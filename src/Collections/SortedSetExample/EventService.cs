@@ -8,14 +8,25 @@ namespace SortedSetExample;
 
 internal class EventManager
 {
+    private readonly SortedSet<Event> _upcomingEvents = new SortedSet<Event>(new EventComparer());
+
     public void AddEvent(Event newEvent)
     {
-        throw new NotImplementedException();
+        _upcomingEvents.Add(newEvent);
+        Console.WriteLine($"Added event: {newEvent}");
     }
 
     public IEnumerable<Event> GetUpcomingEvents()
     {
-        throw new NotImplementedException();
+        return _upcomingEvents;
+    }
+}
+
+class EventComparer : IComparer<Event>
+{
+    public int Compare(Event? x, Event? y)
+    {
+        return x.StartTime.CompareTo(y.StartTime);
     }
 }
 

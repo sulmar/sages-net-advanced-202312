@@ -8,13 +8,27 @@ namespace DictionaryExample;
 
 internal class VehicleService
 {
+    private IDictionary<string, Vehicle> vehicles = new Dictionary<string, Vehicle>();
+
     public void Add(Vehicle vehicle)
     {
-        throw new NotImplementedException();
+        vehicles.Add(vehicle.PlateNumber, vehicle); 
+    }
+
+    public void AddRange(IEnumerable<Vehicle> items)
+    {
+        vehicles = items.ToDictionary(item => item.PlateNumber);
     }
 
     public Vehicle GetByPlateNumber(string plateNumber)
     {
-        throw new NotImplementedException();
+        if (vehicles.TryGetValue(plateNumber, out Vehicle vehicle))
+        {
+            return vehicle;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

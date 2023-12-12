@@ -18,6 +18,11 @@ void VehicleServiceTest()
         vehiclesToAdd.Add(vehicle);
     }
 
+    //foreach(var vehicle in vehiclesToAdd)
+    //    vehicleService.Add(vehicle);
+
+    vehicleService.AddRange(vehiclesToAdd);
+
     while (true)
     {
         Console.WriteLine("plateNumber: ");
@@ -25,6 +30,9 @@ void VehicleServiceTest()
 
         Vehicle? vehicle = vehicleService.GetByPlateNumber(plateNumberToFind);
 
-        Console.WriteLine(vehicle.CustomerName);
+        if (vehicle!=null)
+            Console.WriteLine(vehicle.CustomerName);
+        else
+            Console.WriteLine("Not found");
     }
 }
