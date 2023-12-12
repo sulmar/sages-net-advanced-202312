@@ -56,6 +56,19 @@ class BinaryTree<T>
 
     private IEnumerable<T> TraverseInOrder(TreeNode<T> node)
     {
-        throw new NotImplementedException();
+        if (node != null)
+        {
+            foreach (var leftValue in TraverseInOrder(node.Yes))
+            {
+                yield return leftValue;
+            }
+
+            yield return node.Value;
+
+            foreach(var rightValue in TraverseInOrder(node.No))
+            {
+                yield return rightValue;
+            }
+        }
     }
 }

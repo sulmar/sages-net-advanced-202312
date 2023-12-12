@@ -3,13 +3,13 @@ using System.Data;
 
 Console.WriteLine("Hello, Lazy Collection!");
 
-GenerateTemperaturesTest();
+//GenerateTemperaturesTest();
 
-GenerateNumbersTest();
+//GenerateNumbersTest();
 
-DataTableToEnumerationTest();
+//DataTableToEnumerationTest();
 
-YieldTest();
+//YieldTest();
 
 DecisionTreeTest();
 
