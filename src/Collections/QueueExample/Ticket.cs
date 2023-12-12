@@ -13,5 +13,21 @@ class Ticket
         Issue = issue;
     }
 
-    public override string ToString() => "Ticket #{TicketNumber} - Customer: {CustomerName}, Issue: {Issue}";
+    public override string ToString() => $"Ticket #{TicketNumber} - AssignedTo: {AssignedTo}, Issue: {Issue}";
+}
+
+
+class ProcessedTicket : Ticket
+{
+    public ProcessedTicket(Ticket ticket) : base(ticket.TicketNumber, ticket.AssignedTo, ticket.Issue)
+    {
+        ProcessDate = DateTime.Now;
+    }
+
+    public DateTime ProcessDate { get; }
+
+    public override string ToString()
+    {
+        return $"{base.ToString()} Process on {ProcessDate}";
+    }
 }

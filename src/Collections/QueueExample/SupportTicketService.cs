@@ -2,25 +2,36 @@
 
 class SupportTicketService
 {
+    private readonly Queue<Ticket> _ticketsQueue = new Queue<Ticket>();
+    private readonly List<ProcessedTicket> _processedTickets = new List<ProcessedTicket>();
+
     public void SubmitTicket(Ticket ticket)
     {
-        throw new NotImplementedException();
+        _ticketsQueue.Enqueue(ticket);
 
         Console.WriteLine($"New ticket submitted: {ticket}");
     }
 
     public Ticket ProcessTicket()
     {
-        throw new NotImplementedException();        
+        if (_ticketsQueue.Count > 0)
+        {
+            Ticket ticket = _ticketsQueue.Dequeue();
+            _processedTickets.Add(new ProcessedTicket(ticket));
+
+            return ticket;
+        }
+        else
+            return null;
     }
 
     public IEnumerable<Ticket> GetOpenedTickets()
     {
-        throw new NotImplementedException();
+        return _ticketsQueue;
     }
 
-    public IEnumerable<Ticket> GetClosedTickets()
+    public IEnumerable<ProcessedTicket> GetClosedTickets()
     {
-        throw new NotImplementedException();
+        return _processedTickets;
     }
 }
