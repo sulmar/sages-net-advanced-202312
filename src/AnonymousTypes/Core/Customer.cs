@@ -1,6 +1,6 @@
-﻿namespace AnonymousTypesExample;
+﻿namespace Core;
 
-internal class Customer
+public class Customer
 {
     public int Id { get; set; }
     public string FirstName { get; set; }
@@ -17,7 +17,7 @@ internal class Customer
     }
 }
 
-internal class CustomerInfo
+public class CustomerInfo
 {
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
