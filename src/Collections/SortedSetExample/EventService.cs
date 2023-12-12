@@ -17,7 +17,7 @@ internal class EventManager
 
     public IEnumerable<Event> GetUpcomingEvents(DateTime to)
     {
-        return _upcomingEvents.Where(@event => @event.StartTime < to);
+        return _upcomingEvents.Where(@event => @event.StartTime.Date < to.Date);
     }
 }
 
