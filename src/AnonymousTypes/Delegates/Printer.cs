@@ -8,30 +8,54 @@ namespace Delegates;
 
 public class Printer
 {
+    /*
+    // Definicja metody (tylko sygnatury metody)
+    public delegate void LogDelegate(string message);
+
+    // Zmienna, która przechowuje referencję do metod(y)
+    public LogDelegate? Log;
+    */
+
+    // Action - gotowa sygnatura delegatu typu void
+    public Action<string>? Log;
+
+
+    /*
+    public delegate decimal CalculateCostDelegate(int copies);
+    public CalculateCostDelegate? CalculateCost;
+    */
+
+    // Func - gotowa sygnatura delegatu typu T
+    public Func<int, decimal>? CalculateCost;
+
+    // Predicate - Func, który zwraca typ boolean Func<int, bool>
+    public Predicate<int>? CanPrint;
+
     public void Print(string content, byte copies = 1)
     {
-        for (int copy = 0; copy < copies; copy++)
+        if (!(CanPrint == null || CanPrint.Invoke(copies)))
         {
-            // TODO: Log to Console and/or to LogFile
-            Console.WriteLine($"{DateTime.Now} Printing {content} copy #{copy}");
+            throw new InvalidOperationException();
         }
 
-        // TODO: How to add discount?
-        decimal? cost = CalculateCost(copies, 0.99M);
+        for (int copy = 0; copy < copies; copy++)
+        {
+            Log?.Invoke($"{DateTime.Now} Printing {content} copy #{copy}");
+        }
+
+        decimal? cost = CalculateCost?.Invoke(copies);
 
         if (cost.HasValue)
         {
             DisplayLCD(cost.Value);
         }
 
+        Log?.Invoke($"Printed {copies} copies.");
+
         // TODO: Send printed signal 
-        Console.WriteLine($"Printed {copies} copies.");
     }
 
-    private decimal CalculateCost(int copies, decimal cost)
-    {
-        return copies * cost;
-    }
+
 
     private void DisplayLCD(decimal cost)
     {
