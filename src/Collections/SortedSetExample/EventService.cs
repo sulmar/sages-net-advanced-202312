@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SortedSetExample;
+﻿namespace SortedSetExample;
 
 internal class EventManager
 {
@@ -19,6 +13,11 @@ internal class EventManager
     public IEnumerable<Event> GetUpcomingEvents()
     {
         return _upcomingEvents;
+    }
+
+    public IEnumerable<Event> GetUpcomingEvents(DateTime to)
+    {
+        return _upcomingEvents.Where(@event => @event.StartTime < to);
     }
 }
 

@@ -13,7 +13,7 @@ static void EventManagerTest()
     eventManager.AddEvent(new Event("E2", "Workshop", DateTime.Parse("2023-12-10 14:30:00")));
     eventManager.AddEvent(new Event("E3", "Networking Event", DateTime.Parse("2023-12-12 18:00:00")));
 
-    var upcomingEvents = eventManager.GetUpcomingEvents();
+    var upcomingEvents = eventManager.GetUpcomingEvents(DateTime.Parse("2023-12-14"));
 
     upcomingEvents.Dump("Upcoming Events:");
 }
