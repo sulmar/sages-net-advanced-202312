@@ -31,11 +31,34 @@ public class Printer
     // Predicate - Func, który zwraca typ boolean Func<int, bool>
     public Predicate<int>? CanPrint;
 
+    public delegate void PrintCompletedDelegate();
+    public event PrintCompletedDelegate? PrintCompleted;
+
+    public delegate void PrintedDelegate(object sender, PrintedEventArgs e);
+    public event PrintedDelegate? Printed;
+
+    // Zdarzenie (event) to jest to samo co delegat, ale prywatny 
+    // w takim znaczeniu, że zdarzenie może wywołać tylko właściciel 
+    // a na zewnątrz możemy tylko nasłuchiwać
+
+    private Action<string>? _onError;
+
+    // Przekazywanie Action poprzez metodę
+    public void OnErrorPrint(Action<string> action)
+    {
+        this._onError = action;
+    }
+
     public void Print(string content, byte copies = 1)
     {
         if (!(CanPrint == null || CanPrint.Invoke(copies)))
         {
+            _onError?.Invoke("Błąd wydruku");
+
             throw new InvalidOperationException();
+
+
+
         }
 
         for (int copy = 0; copy < copies; copy++)
@@ -53,6 +76,10 @@ public class Printer
         Log?.Invoke($"Printed {copies} copies.");
 
         // TODO: Send printed signal 
+
+        PrintCompleted?.Invoke();
+
+        Printed?.Invoke(this, new PrintedEventArgs(copies, cost));
     }
 
 
@@ -60,5 +87,17 @@ public class Printer
     private void DisplayLCD(decimal cost)
     {
         Console.WriteLine($"LCD: {cost}");
+    }
+}
+
+public class PrintedEventArgs : EventArgs
+{
+    public int Copies { get; }
+    public decimal? Cost { get; }
+
+    public PrintedEventArgs(int copies, decimal? cost)
+    {
+        Copies = copies;
+        Cost = cost;
     }
 }

@@ -5,6 +5,18 @@ Console.WriteLine("Hello, Delegates!");
 
 Printer printer = new Printer();
 
+printer.OnErrorPrint(DisplayError);
+
+printer.PrintCompleted += OnPrintCompleted;
+printer.Printed += Printer_Printed;
+
+void Printer_Printed(object sender, PrintedEventArgs e)
+{
+    Console.WriteLine($"Printed {e.Copies} copies. Cost {e.Cost:C2}");
+}
+
+
+
 printer.CanPrint += CanPrint;
 
 // Metoda anonimowa (inline)
@@ -39,6 +51,8 @@ printer.CalculateCost += CalculateCost;
 
 printer.Print("Lorem ipsum", 3);
 
+printer.Print("Lorem ipsum");
+
 Console.WriteLine();
 
 void LogToFile(string message)
@@ -55,4 +69,15 @@ decimal CalculateCost(int copies)
 bool CanPrint(int copies)
 {
     return copies < 5;
+}
+
+
+void OnPrintCompleted()
+{
+    Console.WriteLine("Print Completed!");
+}
+
+void DisplayError(string error)
+{
+    Console.WriteLine(error);
 }
