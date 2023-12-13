@@ -10,8 +10,15 @@ namespace AttributeBasedProgramming;
 public class ImageAttribute : Attribute
 {
     public string Filename { get; private set; }
+    
     public ImageAttribute(string filename)
     {
         this.Filename = filename;
     }
+
+    public ImageAttribute(string filename, float opacity)
+    {
+        this.Filename = filename;
+    }
+
 }

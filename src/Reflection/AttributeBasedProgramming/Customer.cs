@@ -17,6 +17,7 @@ internal class Base : INotifyPropertyChanged
 }
 
 [Image("customer.png")]
+[DisplayName("Klient")]
 internal class Customer : Base
 {
     [Required, MinLength(3, ErrorMessage = "Imię zbyt krótkie")]
@@ -58,10 +59,11 @@ internal class Customer : Base
 
 public enum Gender
 {
-    [Image("male.png")]
+    [Image("male.png"), Description("Mężczyzna")]    
     Male,
 
-    [Image("female.png")]
+    [Image("female.png", 0.8f)]
+    [Description("Kobieta")]
     Female
 }
 
