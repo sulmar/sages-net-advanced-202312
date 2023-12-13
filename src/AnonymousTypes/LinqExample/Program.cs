@@ -7,8 +7,7 @@ Console.WriteLine("Hello, LINQ!");
 
 var customerFaker = new CustomerFaker();
 
-var customers = customerFaker.Generate(100_000);
-
+var customers = customerFaker.Generate(1_000);
 
 
 // Zapis imperatywny
