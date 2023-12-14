@@ -1,4 +1,4 @@
-﻿namespace LockExample;
+﻿namespace MonitorExample;
 
 internal class LoadBalancer
 {
@@ -15,14 +15,21 @@ internal class LoadBalancer
         {
             Dump("enter");
 
-            lock (lockObject)   // -> Monitor.Enter(lockObject)
+            Monitor.Enter(lockObject);
+
+            try
             {
+
                 Dump("checking _instance...");
                 if (_instance == null)  // <-- t1
                 {
                     _instance = new LoadBalancer(); // <------------ t1
                 }
-            }                   // -> Monitor.Exit(lockObject)
+            }
+            finally
+            {
+                Monitor.Exit(lockObject);
+            }
 
             Dump("exit.");
 
@@ -43,7 +50,7 @@ internal class LoadBalancer
             new Server { Name = "ServerE", IP = "192.168.0.22" },
         ];
 
-        // throw new FileNotFoundException();
+        throw new FileNotFoundException();
 
         Thread.Sleep(1000);
     }
