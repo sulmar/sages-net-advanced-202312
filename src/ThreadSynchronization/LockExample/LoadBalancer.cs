@@ -6,15 +6,32 @@ internal class LoadBalancer
 
     private readonly Random random = new Random();
 
+    private static readonly object lockObject = new object();
+
     private static LoadBalancer _instance;
     public static LoadBalancer Instance
     {
         get
         {
-            if (_instance == null) // <-- 
+            Dump("enter");
+
+            Monitor.Enter(lockObject);
+
+            try
             {
-                _instance = new LoadBalancer();
+
+                Dump("checking _instance...");
+                if (_instance == null)  // <-- t1
+                {
+                    _instance = new LoadBalancer(); // <------------ t1
+                }
             }
+            finally
+            {
+                Monitor.Exit(lockObject);
+            }
+
+            Dump("exit.");
 
             return _instance;
         }
@@ -32,6 +49,8 @@ internal class LoadBalancer
             new Server { Name = "ServerD", IP = "192.168.0.21" },
             new Server { Name = "ServerE", IP = "192.168.0.22" },
         ];
+
+        throw new FileNotFoundException();
 
         Thread.Sleep(1000);
     }
