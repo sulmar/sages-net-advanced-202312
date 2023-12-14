@@ -1,18 +1,20 @@
 ﻿
+
 using LockExample;
 
-Console.WriteLine("Hello, Lock!");
 
-BankAccount accountA = new(100);
-BankAccount accountB = new(100);
+LoadBalanceRequestTest(15);
 
-BankAccountService bankAccountService = new BankAccountService();
+static void LoadBalanceRequestTest(int numberOfRequests)
+{
+    LoadBalancer loadBalancer = new LoadBalancer();
 
-Task.Run(()=> bankAccountService.Transfer(accountA, accountB, 10));
-Task.Run(()=>bankAccountService.Transfer(accountB, accountA, 20));
-
-Console.WriteLine(accountA.Balance);
-Console.WriteLine(accountB.Balance);
+    for (int i = 0; i < numberOfRequests; i++)
+    {
+        Server server = loadBalancer.NextServer;
+        Console.WriteLine($"Send request to: {server.Name} {server.IP}");
+    }
+}
 
 
 Console.ReadKey();
