@@ -8,7 +8,7 @@ Console.WriteLine($"Thread #{Thread.CurrentThread.ManagedThreadId} Hello, Task!"
 
 // ReflectionTaskTest();
 
-CancellationTokenSource cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(8));
+CancellationTokenSource cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(20));
 
 
 CancellationToken cancellationToken = cancellationTokenSource.Token;
@@ -16,6 +16,18 @@ CancellationToken cancellationToken = cancellationTokenSource.Token;
 IProgress<int> progress = new Progress<int>(step => Console.Write("."));
 
 TaxCalculator taxCalculator = new TaxCalculator();
+
+Task<decimal> task1 = Task.Run(() => taxCalculator.Calculate(1000, cancellationToken, progress));
+Task<decimal> task2 = Task.Run(() => taxCalculator.Calculate(1000, cancellationToken, progress));
+
+// Czekamy na wykonanie zadań i idziemy dalej
+//Task.WaitAll(task1, task2);
+// var total = task1.Result + task2.Result;
+
+// Wykonaj sumowanie po zakończeniu wszystkich zadań, ale nie czekaj
+Task.WhenAll(task1, task2)
+    .ContinueWith(completedTasks => Console.WriteLine($"Total {completedTasks.Result[0] + completedTasks.Result[1]}"));
+    
 
 Task<decimal> task = Task.Run(() => taxCalculator.Calculate(1000, cancellationToken, progress));
 
