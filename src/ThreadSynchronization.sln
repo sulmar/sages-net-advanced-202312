@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonitorExample", "ThreadSyn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SemaphoreExample", "ThreadSynchronization\SemaphoreExample\SemaphoreExample.csproj", "{0FE4497E-F6A7-4776-B6FE-6836F397A9DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MutexExample", "ThreadSynchronization\MutexExample\MutexExample.csproj", "{8F00BDB8-768E-469B-BD7B-7729E486D884}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0FE4497E-F6A7-4776-B6FE-6836F397A9DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FE4497E-F6A7-4776-B6FE-6836F397A9DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FE4497E-F6A7-4776-B6FE-6836F397A9DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F00BDB8-768E-469B-BD7B-7729E486D884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F00BDB8-768E-469B-BD7B-7729E486D884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F00BDB8-768E-469B-BD7B-7729E486D884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F00BDB8-768E-469B-BD7B-7729E486D884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
