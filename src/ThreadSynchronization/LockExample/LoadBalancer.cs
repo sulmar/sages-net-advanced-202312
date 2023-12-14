@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LockExample;
+﻿namespace LockExample;
 
 internal class LoadBalancer
 {
@@ -12,9 +6,23 @@ internal class LoadBalancer
 
     private readonly Random random = new Random();
 
-    public LoadBalancer()
+    private static LoadBalancer _instance;
+    public static LoadBalancer Instance
     {
-        Console.WriteLine("Initialize");
+        get
+        {
+            if (_instance == null) // <-- 
+            {
+                _instance = new LoadBalancer();
+            }
+
+            return _instance;
+        }
+    }
+
+    protected LoadBalancer()
+    {
+        Dump("Initialize");
 
         servers =
         [
@@ -24,12 +32,27 @@ internal class LoadBalancer
             new Server { Name = "ServerD", IP = "192.168.0.21" },
             new Server { Name = "ServerE", IP = "192.168.0.22" },
         ];
+
+        Thread.Sleep(1000);
     }
 
     // Simple Load Balancer
-    public Server NextServer => servers[random.Next(servers.Count)];
+    public Server NextServer
+    {
+        get
+        {
+            var server = servers[random.Next(servers.Count)];
+
+            Dump($"Send request to: {server.Name} {server.IP}");
+
+            return server;
+        }
+    }
+
+    private static void Dump(string message) => Console.WriteLine($"Thread #{Thread.CurrentThread.ManagedThreadId} {message}");
 
 }
+
 
 
 public class Server
