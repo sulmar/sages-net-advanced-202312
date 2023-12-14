@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPoolExample", "ThreadPoolExample\ThreadPoolExample.csproj", "{9B3EC666-89EA-43E1-83CB-32FB6162DC18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadPoolExample", "ThreadPoolExample\ThreadPoolExample.csproj", "{9B3EC666-89EA-43E1-83CB-32FB6162DC18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadExample", "ThreadExample\ThreadExample.csproj", "{732C6363-D9AE-41B0-AACC-A5EB75C93CA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadExample", "ThreadExample\ThreadExample.csproj", "{732C6363-D9AE-41B0-AACC-A5EB75C93CA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskExample", "TaskExample\TaskExample.csproj", "{CAD87759-F002-42B4-A998-A8137242BCDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskExample", "TaskExample\TaskExample.csproj", "{CAD87759-F002-42B4-A998-A8137242BCDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelExample", "ParallelExample\ParallelExample.csproj", "{2E9A3FAE-51FF-4F6B-871D-0CA9442573F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelExample", "ParallelExample\ParallelExample.csproj", "{2E9A3FAE-51FF-4F6B-871D-0CA9442573F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelLinqExample", "ParallelLinqExample\ParallelLinqExample.csproj", "{3ABD45C4-9BFF-4ECA-8993-3BABC96B4EF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelLinqExample", "ParallelLinqExample\ParallelLinqExample.csproj", "{3ABD45C4-9BFF-4ECA-8993-3BABC96B4EF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitExample", "AsyncAwaitExample\AsyncAwaitExample.csproj", "{7AC6B994-C7DB-4548-B533-8565481A3E54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{3ABD45C4-9BFF-4ECA-8993-3BABC96B4EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ABD45C4-9BFF-4ECA-8993-3BABC96B4EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ABD45C4-9BFF-4ECA-8993-3BABC96B4EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC6B994-C7DB-4548-B533-8565481A3E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC6B994-C7DB-4548-B533-8565481A3E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC6B994-C7DB-4548-B533-8565481A3E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC6B994-C7DB-4548-B533-8565481A3E54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
