@@ -8,9 +8,16 @@ Console.WriteLine($"Thread #{Thread.CurrentThread.ManagedThreadId} Hello, Task!"
 
 // ReflectionTaskTest();
 
+CancellationTokenSource cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(8));
+
+
+CancellationToken cancellationToken = cancellationTokenSource.Token;
+
+IProgress<int> progress = new Progress<int>(step => Console.Write("."));
+
 TaxCalculator taxCalculator = new TaxCalculator();
 
-Task<decimal> task = Task.Run(() => taxCalculator.Calculate(1000));
+Task<decimal> task = Task.Run(() => taxCalculator.Calculate(1000, cancellationToken, progress));
 
 // Method Chaining 
 Task continuationTask = task
@@ -18,12 +25,22 @@ Task continuationTask = task
         .ContinueWith(nextCompletedTask => Console.WriteLine($"Thread #{Thread.CurrentThread.ManagedThreadId} next job"));
 
 
-Console.WriteLine(".");
+Console.WriteLine("Press Enter to cancel task");
+
+Console.ReadLine();
+
+// cancellationTokenSource.Cancel();
+
+cancellationTokenSource.CancelAfter(3000);
+
+Console.WriteLine($"Thread #{Thread.CurrentThread.ManagedThreadId} Press any key to exit.");
+Console.ReadLine();
+
 // task.Wait();
 
 // Console.WriteLine($"Thread #{Thread.CurrentThread.ManagedThreadId} {task.Result}");
 
-Console.WriteLine("..");
+// Console.WriteLine("..");
 
 // TaskTest();
 
@@ -59,8 +76,6 @@ void TaskWithResult()
 
 }
 
-Console.WriteLine($"Thread #{Thread.CurrentThread.ManagedThreadId} Press any key to exit.");
-Console.ReadLine();
 
 static void TaskTest()
 {

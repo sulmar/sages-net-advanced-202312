@@ -10,11 +10,28 @@ internal class TaxCalculator
 {
     const decimal Tax = 0.19M;
 
-    public decimal Calculate(decimal income)
+    public decimal Calculate(decimal income, CancellationToken cancellationToken = default, IProgress<int> progress = default)
     {
-        Console.WriteLine($"Thread #{Thread.CurrentThread.ManagedThreadId} Calculating...");
+        Console.Write($"Thread #{Thread.CurrentThread.ManagedThreadId} Calculating");
 
-        Thread.Sleep(10_000);
+        for (int i = 0; i < 10; i++)
+        {
+            //if (cancellationToken.IsCancellationRequested)
+            //{
+            //    Console.WriteLine("IsCancellationRequested");
+            //    throw new OperationCanceledException();
+            //}
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            // Console.Write(".");
+            progress.Report(i);            
+
+            Thread.Sleep(1000);
+
+        }
+
+        Console.WriteLine();
 
         Console.WriteLine($"Thread #{Thread.CurrentThread.ManagedThreadId} Calculated.");
 
