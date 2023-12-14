@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,15 @@ namespace ConcurrentBagExample;
 
 internal class LogManager
 {
-    private List<string> logEntries = new List<string>();
+    private ConcurrentBag<string> logEntries = new ConcurrentBag<string>();
 
     public void Log(string message)
     {
         string logEntry = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - Thread {Thread.CurrentThread.ManagedThreadId}: {message}";
 
         logEntries.Add(logEntry);
+
+        Thread.Sleep(1000);
 
     }
 

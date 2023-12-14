@@ -11,7 +11,9 @@ taskManager.ProcessTasks();
 Parallel.Invoke(
     () => taskManager.EnqueueTask("Task 1"),
     () => taskManager.EnqueueTask("Task 2"),
-    () => taskManager.EnqueueTask("Task 3")
+    () => taskManager.EnqueueTask("Task 3"),
+    () => taskManager.EnqueueTask("Task 4"),
+    () => taskManager.EnqueueTask("Task 5")
 );
 
 // Simulate the main thread doing some work

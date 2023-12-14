@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace ConcurrentQueueExample;
 
 internal class TaskManager
 {
-    private Queue<string> taskQueue = new Queue<string>();
+    private ConcurrentQueue<string> taskQueue = new();
 
     // Enqueue a task to the queue without proper synchronization
     public void EnqueueTask(string task)
@@ -30,13 +31,19 @@ internal class TaskManager
                 // Dequeue and process tasks
                 while (taskQueue.Count > 0)
                 {
-                    string task = taskQueue.Dequeue();
-                    Console.WriteLine($"Processing task: {task}");
-                    
-                    // Your task processing logic goes here
+                    if (taskQueue.TryDequeue(out string task))
+                    {
+                        Console.WriteLine($"Processing task: {task}");
 
-                    // Simulate processing interval
-                    Thread.Sleep(1000);
+                        // Your task processing logic goes here
+
+                        // Simulate processing interval
+                        Thread.Sleep(1000);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Skipped task");
+                    }
                 }
             }
         });

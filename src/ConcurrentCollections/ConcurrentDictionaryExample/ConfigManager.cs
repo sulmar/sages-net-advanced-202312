@@ -9,7 +9,7 @@ namespace ConcurrentDictionaryExample
 {
     public class ConfigManager
     {
-        private readonly Dictionary<string, object> settings = new();
+        private readonly ConcurrentDictionary<string, object> settings = new();
 
         public void Set(string key, object value)
         {
